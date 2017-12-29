@@ -5,7 +5,7 @@ Description=OVH DynHost Updater
 Environment=USERNAME=example.org-test
 Environment=PASSWORD=your-password
 Environment=HOSTNAME=test.example.org
-ExecStart=/opt/tools/ovh-dynhost-updater --username $USERNAME \
+ExecStart=/usr/local/bin/ovh-dynhost --username $USERNAME \
                                          --password $PASSWORD \
                                          update-record $HOSTNAME
 
