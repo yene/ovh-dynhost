@@ -13,3 +13,13 @@ make osx
 make windows
 make armv7
 ```
+
+### Install systemd
+
+```bash
+sudo mv systemd/ovh-dynhost.* /etc/systemd/system/
+sudo systemctl enable ovh-dynhost.timer
+sudo systemctl start ovh-dynhost.timer
+sudo systemctl enable ovh-dynhost.service
+journalctl -f -u ovh-dynhost
+```
