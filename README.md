@@ -21,5 +21,7 @@ sudo mv systemd/ovh-dynhost.* /etc/systemd/system/
 sudo systemctl enable ovh-dynhost.timer
 sudo systemctl start ovh-dynhost.timer
 sudo systemctl enable ovh-dynhost.service
-journalctl -f -u ovh-dynhost
 ```
+
+Verify with `systemctl list-timers`
+See the logs with `journalctl -f -u ovh-dynhost`
