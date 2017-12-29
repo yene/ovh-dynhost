@@ -3,7 +3,7 @@
 This tool is here to help with updating the IP address of OVH DynHost.
 
 ### Example
-`ovh-dynhost-updater --username $USERNAME --password $PASSWORD update-record $HOSTNAME`
+`ovh-dynhost --username $USERNAME --password $PASSWORD update-record $HOSTNAME`
 
 ### Cross compile
 
