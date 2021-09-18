@@ -2,8 +2,10 @@ package main
 
 import (
 	"fmt"
+	"io/ioutil"
 	"log"
 	"net"
+	"strings"
 
 	"github.com/parnurzeal/gorequest"
 	"github.com/urfave/cli"
@@ -36,15 +38,21 @@ func sendUpdateApi(username string, password string, domain string, ip string) {
 		req.Param("myip", ip)
 	}
 
-	log.Printf("Request to the OVH API: %s", req)
+	log.Printf("Request to the OVH API: %s", req.Url)
 
 	resp, _, errs := req.End()
-	log.Printf("Response from update record call to the OVH API: %s", resp)
+	log.Printf("Response from update record call to the OVH API: %d", resp.StatusCode)
 	if errs != nil {
 		log.Fatalf("Error while issuing the update record call to the OVH API: %s", errs)
 	}
+
 	if resp.StatusCode != 200 {
-		log.Fatalf("Error while issuing the update record call to the OVH API: %s", resp)
+		log.Fatalf("Error while issuing the update record call to the OVH API: %d", resp.StatusCode)
+	}
+	body, _ := ioutil.ReadAll(resp.Body)
+
+	if strings.Contains(string(body), "!yours") {
+		log.Fatalf("Error provided domain %s does not exist as DynHost", domain)
 	}
 
 	fmt.Printf("IP Address of domain %s updated!\n", domain)

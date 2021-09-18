@@ -2,12 +2,10 @@
 Description=OVH DynHost Updater
 
 [Service]
+Environment=HOSTNAME=test.example.org
 Environment=USERNAME=example.org-test
 Environment=PASSWORD=your-password
-Environment=HOSTNAME=test.example.org
-ExecStart=/usr/local/bin/ovh-dynhost --username $USERNAME \
-                                         --password $PASSWORD \
-                                         update-record $HOSTNAME
+ExecStart=/usr/local/bin/ovh-dynhost --username $USERNAME --password $PASSWORD update-record $HOSTNAME
 
 [Install]
 WantedBy=multi-user.target

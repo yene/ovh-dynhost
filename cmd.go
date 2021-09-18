@@ -25,11 +25,11 @@ type ConfigEntries struct {
 
 func appDefinition() (app *cli.App) {
 	app = cli.NewApp()
-	app.Name = "ovh-dynhost-upgrader"
+	app.Name = "ovh-dynhost"
 	app.Authors = []cli.Author{
-		cli.Author{
+		{
 			Name:  "Yannick Weiss",
-			Email: "contact@yannickweiss.com",
+			Email: "",
 		},
 	}
 	app.Usage = "Update OVH DynHost DNS record."
